@@ -1,0 +1,28 @@
+# --- Web framework / API ---
+fastapi
+uvicorn[standard]
+pydantic
+pydantic-settings
+python-multipart
+
+# --- ML / NLP ---
+torch
+transformers
+sentence-transformers
+scikit-learn
+numpy
+pandas
+
+# --- Database (PostgreSQL / Supabase) ---
+sqlalchemy
+psycopg2-binary
+alembic
+supabase
+
+# --- Utilities ---
+python-dotenv
+httpx
+
+# --- Testing ---
+pytest
+pytest-asyncio
