@@ -4,6 +4,11 @@ A web application that scores how well a resume aligns with a job description. I
 both an overall fit score and a section-level breakdown across skills, experience, and
 education, computed via sentence embeddings and cosine similarity.
 
+## Live Demo
+
+- Frontend: https://resume-job-matcher-gray.vercel.app
+- API: https://resume-job-matcher-mgab.onrender.com/docs
+
 ## Features
 
 - Overall match score between a resume and a job description, in the range 0-1
