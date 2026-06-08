@@ -6,23 +6,9 @@ pydantic-settings
 python-multipart
 
 # --- ML / NLP ---
-torch
-transformers
 fastembed
-scikit-learn
 numpy
-pandas
-
-# --- Database (PostgreSQL / Supabase) ---
-sqlalchemy
-psycopg2-binary
-alembic
-supabase
 
 # --- Utilities ---
 python-dotenv
 httpx
-
-# --- Testing ---
-pytest
-pytest-asyncio

@@ -1,8 +1,9 @@
 import re
 
-from sentence_transformers import SentenceTransformer, util
+import numpy as np
+from fastembed import TextEmbedding
 
-_model = SentenceTransformer("all-MiniLM-L6-v2")
+_model = TextEmbedding(model_name="sentence-transformers/all-MiniLM-L6-v2")
 
 # Maps a canonical section name to the header keywords that identify it in the text.
 SECTION_KEYWORDS = {
@@ -14,9 +15,11 @@ SECTION_KEYWORDS = {
 
 def compute_similarity(resume_text: str, job_description_text: str) -> float:
     """Embed both texts and return their cosine similarity, clamped to [0, 1]."""
-    embeddings = _model.encode([resume_text, job_description_text], convert_to_tensor=True)
-    score = util.cos_sim(embeddings[0], embeddings[1]).item()
-    return max(0.0, min(1.0, score))
+    resume_embedding, job_embedding = _model.embed([resume_text, job_description_text])
+    score = np.dot(resume_embedding, job_embedding) / (
+        np.linalg.norm(resume_embedding) * np.linalg.norm(job_embedding)
+    )
+    return max(0.0, min(1.0, float(score)))
 
 
 def parse_sections(text: str) -> dict:
